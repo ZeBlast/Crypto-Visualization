@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Launch-Year Explorer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">D3.js interactive visualization</p>
+        <h1>Crypto Launch-Year Explorer</h1>
+        <p class="subtitle">Explore launch cohorts on the left and compare each coin's current market cap against selectable 1-day, 7-day, 1-month, and 1-year percentage changes on the right.</p>
+      </div>
+    </header>
+
+    <section class="controls card">
+      <div class="control-block slider-block">
+        <label for="marketCapSlider">Minimum current market cap: <span id="marketCapValue"></span></label>
+        <input id="marketCapSlider" type="range" min="0" max="100" step="1" value="0" />
+      </div>
+      <div class="control-block select-block">
+        <label for="rangeSelect">Plot time range</label>
+        <select id="rangeSelect">
+          <option value="1d">1 day</option>
+          <option value="7d" selected>7 days</option>
+          <option value="1m">1 month</option>
+          <option value="1y">1 year</option>
+        </select>
+      </div>
+      <div class="control-block button-block">
+        <button id="resetFilters" type="button">Reset filters</button>
+      </div>
+    </section>
+
+    <section class="viz-grid">
+      <div class="card chart-card">
+        <div class="section-title-row">
+          <div>
+            <h2>Launch-year distribution histogram</h2>
+            <p>Hover a bar for details, or click a bar to add or remove that launch-year bucket from the plot.</p>
+          </div>
+          <div id="selectionSummary" class="selection-summary"></div>
+        </div>
+        <svg id="histogram" aria-label="Launch year histogram"></svg>
+        <div class="histogram-actions">
+          <button id="selectAllYears" type="button">Select all</button>
+          <button id="selectNoYears" type="button">Select none</button>
+        </div>
+      </div>
+
+      <aside class="card details-card">
+        <h2>Coin details</h2>
+        <div id="detailsPanel" class="details-empty">Hover a histogram bar or a point to inspect the cohort or coin here.</div>
+      </aside>
+
+      <div class="card chart-card">
+        <div class="section-title-row">
+          <div>
+            <h2 id="priceChartTitle">7-day change vs current market cap</h2>
+            <p id="priceChartSubtitle">Each point is a cryptocurrency positioned by current market cap and 7-day percentage change. Point size reflects summative 7-day volume.</p>
+          </div>
+        </div>
+        <svg id="priceChart" aria-label="7-day change versus current market cap chart"></svg>
+        <div class="annotation" id="annotationText"></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="tooltip" class="tooltip hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
