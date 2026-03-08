@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualization Information Page</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div class="page">
+    <header class="hero">
+      <div class="write-up">
+        
+        
+        <h1>Visualization Information Page</h1>
+        
+        
+        
+        <p>This interactive data visualization explores the top 99 cryptocurrency coins since 2010. The ranking is based on each coin's current market capitalization, which is the total dollar value of a cryptocurrency's circulating supply and is calculated by multiplying the current price of one coin by the total number of coins in circulation.</p>
+        <button id="backButton">Back to Visualization</button>
+        <h2>Dataset</h2>
+        
+        <p>This visualization uses a 
+            <a href="https://www.kaggle.com/datasets/kaushiksuresh147/top-10-cryptocurrencies-historical-dataset/data">dataset</a> 
+            consisting of the top 99 cryptocurrencies launched since 2010, ranked by their current market capitalization.</p>
+
+        
+        
+        <h2><b>Interactions in this visualization:</b></h2>
+        <p>This visualization includes several interactive features that allow users to explore relationships between cryptocurrency launch year, market capitalization, and price performance over time.</p>
+        <h3>Market Capitalization Slider</h3>
+        <p>Users can filter the dataset by adjusting the minimum market capitalization using the slider at the top of the page, removing coins with a martket cap below the threshold from the visualizations. Other interactive elements, such as dropdown menus or radio buttons, were considered for filtering the data based on market capitalization. However, a slider was ultimately chosen because it provides a more intuitive and efficient way for users to explore different market capitalization thresholds quickly.</p>
+      
+        <h3>Time Range Selector</h3>
+        <p>A dropdown menu allows users to select the time range used for the price change metric shown in the scatter plot. Users can switch between 1-day, 7-day, 1-month, and 1-year percentage changes, updating the scatter plots for quick comparison between short-term and long-term market performance. Using a slider for more customizable timeframes was considered, but the dropdown implementation was determined to be easier for the user to use.</p>
+
+        <h3>Histogram</h3>
+        <p>The histogram visualization not only displays the count of top-99 coins for each year, but it also acts as a filter for the scatter plot. Rather than cluttering the page with too many sliders, buttons, and dropdowns, it was decided that leveraging hovering mechanics and clickable graph elements was the cleanest way to provide scatterplot customization.</p>
+        <h4>Histogram Interactions</h4>
+        <ul>
+            <li>When a user hovers over a bar in the launch-year histogram, detailed information about that launch cohort is displayed.</li>
+            <li>Users can click a histogram bar to toggle that launch-year cohort on or off in the scatter plot.</li>
+            <li>Two buttons beneath the histogram allow users to quickly select or deselect all launch years.</li>
+        </ul>
+
+        <h3>Scatter Plot</h3>
+        <p>Each point in the scatter plot represents an individual cryptocurrency. When users hover over a point, a tooltip appears displaying details about that coin, such as its name, market capitalization, price change for the selected time period, and trading volume. This method for data inspection was chosen because it allows users to inspect specific coins without cluttering the visualization.</p>
+
+        <h3>Dynamic Details Page</h3>
+        <p>The details panel on the right side updates based on the user’s interaction. When a histogram bar is hovered, the panel shows information about the selected launch-year cohort. When a scatter plot point is hovered, it displays detailed information about that specific cryptocurrency. This feature allows for the most effective use of the same visual space, rather than having two separate areas dedicated for similar function.</p>
+
+        <h2>Development Process</h2>
+        <p>Our team collaboratively researched various datasets for potential use, selected the cryptocurrency topic and dataset, and planned the overall layout and types of visualizations to use. After establishing a design, we used Codex to help generate an initial implementation of the page structure, charts, and interactions. We then split up the remaining workload, with Jonathan focusing on reviewing and modifying the code, fixing issues with certain interactions (such as hovering mechanics), and Elijah focusing on the construction of the information page and the video demo. In total, we estimate spending roughly 5-10 people hours developing the application. Most of the time was spent refining interactions between the visualizations and adjusting the layout, which was the most challenging part of the development process because it required making the interface look clean and readable while also ensuring that all interactions and filters updated the visualizations correctly. </p>
+
+        <h2>AI Usage</h2>
+        <p>AI tools such as Codex/ChatGPT were used to assist with generating initial code for parts of the visualization and troubleshooting implementation issues. These tools helped accelerate development by suggesting D3 patterns for chart creation, data binding, and interaction handling. However, the generated code required manual adjustments, debugging, and refinement to properly integrate with our dataset and achieve the intended functionality.</p>
+        <br>
+        <button id="backButton">Back to Visualization</button>
+      </div>
+    </header>
+
+</div>
+</body>
+<script>
+    //Route the "Back" button to the visualization page
+    document.getElementById("backButton").addEventListener("click", () => {
+    window.location.href = "index.html";
+    });
+</script>

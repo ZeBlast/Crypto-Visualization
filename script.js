@@ -35,6 +35,12 @@ const state = {
 
 let renderFrame = null;
 
+//Route the "Learn More" button to the info page
+document.getElementById("learnMoreBtn").addEventListener("click", () => {
+  window.location.href = "info.html";
+});
+
+
 function formatCurrency(value) {
   return d3.format('$,.2s')(value).replace('G', 'B');
 }
@@ -706,3 +712,4 @@ Promise.all([
   initControls();
   renderAll();
 });
+
